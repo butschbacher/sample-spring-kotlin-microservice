@@ -1,2 +1,40 @@
-spring.application.name: sample-spring-kotlin-microservice
-management.endpoints.web.exposure.include: '*'
+spring:
+  application:
+    name: sample-spring-kotlin-microservice
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: '*'
+  profiles: cloud
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: ${JDBC_DATASOURCE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+
+
+---
+spring:
+  application:
+    name: sample-spring-kotlin-microservice
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+  profiles: default
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non-contextual-creation: true
+
