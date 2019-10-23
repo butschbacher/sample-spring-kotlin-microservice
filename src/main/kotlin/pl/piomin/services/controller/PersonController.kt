@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
 
+@CrossOrigin
 @RestController
 @RequestMapping("/persons")
 class PersonController(var repository: PersonRepository) {
